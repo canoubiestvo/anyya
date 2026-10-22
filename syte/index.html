@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff0f5">
+<meta name="description" content="Маленький мир, созданный Максимом для Ани 💗">
+<title>Для Ани ♡</title>
+<style>
+:root{--pink:#f6a9c5;--deep:#b94d78;--pale:#fff0f5;--ink:#63384b;--white:#fffafc}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--pale);color:var(--ink);font-family:Georgia,'Times New Roman',serif;overflow-x:hidden}
+button,input{font:inherit}.hidden{display:none!important}
+#gate{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:22px;background:radial-gradient(circle at 20% 20%,#fff 0,#ffe1ec 45%,#f8b4ce 100%);transition:opacity .7s,visibility .7s}
+#gate.gone{opacity:0;visibility:hidden;pointer-events:none}.gate-card{width:min(440px,100%);padding:34px 25px;border:1px solid #ffffffb0;border-radius:28px;background:#ffffffd9;box-shadow:0 25px 70px #9e46672b;text-align:center;backdrop-filter:blur(12px);animation:rise .8s both}
+.gate-heart{font-size:2.5rem;animation:pulse 1.8s infinite}.gate-card h1{font-size:clamp(1.7rem,7vw,2.5rem);margin:10px 0;color:var(--deep)}.hint{font: .95rem Arial,sans-serif;color:#986077;margin:0 0 18px}.pass-row{display:flex;gap:8px}.pass-row input{min-width:0;flex:1;padding:14px;border:1px solid #efb1c9;border-radius:14px;outline:none;text-align:center;letter-spacing:.15em;background:#fffafd}.pass-row input:focus{box-shadow:0 0 0 3px #f6a9c555}.pass-row button,.cta{border:0;border-radius:14px;padding:13px 18px;background:var(--deep);color:white;cursor:pointer;transition:transform .2s,background .2s}.pass-row button:hover,.cta:hover{transform:translateY(-2px);background:#9f3c64}.error{min-height:22px;color:#b33155;font: .85rem Arial,sans-serif;margin-top:10px}
+main{opacity:0;transition:opacity 1s}main.open{opacity:1}
+.hero{min-height:92svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:70px 22px 55px;position:relative;overflow:hidden;background:linear-gradient(150deg,#fff9fc,#ffe4ee 60%,#f8bfd4)}
+.eyebrow{font: .78rem Arial,sans-serif;text-transform:uppercase;letter-spacing:.22em;color:#a85b79}.hero h1{font-size:clamp(3.3rem,14vw,7rem);line-height:.95;margin:22px 0;color:var(--deep);font-weight:normal}.hero p{max-width:530px;font-size:clamp(1.05rem,3.5vw,1.3rem);line-height:1.7;margin:0 auto 25px}.hero .cta{display:inline-block;text-decoration:none;font: .95rem Arial,sans-serif;padding:14px 22px}.floating{position:absolute;color:#e78bb0;opacity:.65;animation:float 7s ease-in-out infinite;pointer-events:none}.f1{top:12%;left:9%;font-size:2.4rem}.f2{top:22%;right:9%;font-size:1.8rem;animation-delay:-2s}.f3{bottom:14%;right:15%;font-size:2.7rem;animation-delay:-4s}.f4{bottom:22%;left:13%;font-size:1.6rem;animation-delay:-1s}
+section{padding:76px 20px;max-width:1050px;margin:auto}.section-title{text-align:center;font-size:clamp(2rem,8vw,3.2rem);font-weight:normal;color:var(--deep);margin:0 0 12px}.section-sub{text-align:center;font: .95rem/1.7 Arial,sans-serif;color:#986077;margin:0 auto 34px;max-width:570px}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.photo-card{background:white;padding:10px 10px 17px;border-radius:8px;box-shadow:0 10px 28px #9b486518;transform:rotate(var(--tilt));transition:transform .3s}.photo-card:hover{transform:rotate(0) translateY(-5px)}.photo-card img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;background:linear-gradient(135deg,#ffe2ed,#f7b5ce)}.photo-card p{text-align:center;margin:13px 0 0;font-size:1.02rem}.photo-card .placeholder{display:grid;place-items:center;color:#a8587a;font: .9rem Arial,sans-serif;text-align:center;padding:10px}
+.letter-wrap{max-width:740px;margin:auto;background:#fffafc;border:1px solid #f5c8d9;border-radius:4px;padding:clamp(25px,6vw,55px);box-shadow:0 18px 50px #9b486512;position:relative}.letter-wrap:before{content:'♡';position:absolute;right:22px;top:12px;font-size:2rem;color:#efabc5}.letter-wrap p{font-size:1.12rem;line-height:1.95;margin:0 0 17px}.signature{text-align:right;color:var(--deep);font-size:1.4rem!important;margin-top:28px!important}
+.timer-panel{max-width:780px;margin:auto;text-align:center;padding:32px 20px;background:#ffffffb8;border:1px solid #f5c8d9;border-radius:24px}.timer-label{font: .85rem Arial,sans-serif;color:#986077;letter-spacing:.08em}.timer{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}.time-box{background:#fff0f5;border-radius:16px;padding:17px 5px}.time-box strong{display:block;font-size:clamp(1.8rem,7vw,3.2rem);font-weight:normal;color:var(--deep);font-variant-numeric:tabular-nums}.time-box span{font: .75rem Arial,sans-serif;color:#986077}
+.reasons{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.reason{background:#fffafc;border:1px solid #f7d2e0;border-radius:18px;padding:22px;display:flex;gap:13px;align-items:flex-start;line-height:1.6;transition:transform .25s}.reason:hover{transform:translateY(-4px)}.reason b{font-size:1.35rem;color:#e58caf;font-weight:normal}.reason p{margin:0}
+.final-note{text-align:center;background:linear-gradient(145deg,#ffe3ee,#fff6fa);padding:70px 20px}.final-note h2{font-weight:normal;font-size:clamp(2rem,8vw,3.4rem);color:var(--deep);margin:0 0 15px}.final-note p{max-width:560px;margin:auto;line-height:1.8}.footer{text-align:center;padding:23px;font: .8rem Arial,sans-serif;color:#b17a91}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s,transform .8s}.reveal.visible{opacity:1;transform:translateY(0)}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:900;overflow:hidden}.petal{position:absolute;top:-30px;animation:fall linear forwards}
+@keyframes rise{from{opacity:0;transform:translateY(15px) scale(.98)}to{opacity:1;transform:none}}@keyframes pulse{50%{transform:scale(1.13)}}@keyframes float{50%{transform:translateY(-18px) rotate(9deg)}}@keyframes fall{to{transform:translateY(110vh) rotate(500deg);opacity:0}}
+@media(max-width:650px){.photo-grid{grid-template-columns:repeat(2,1fr);gap:12px}.photo-card:last-child{grid-column:1/-1;width:70%;justify-self:center}.reasons{grid-template-columns:1fr}section{padding:60px 17px}.timer{gap:6px}.time-box{padding:13px 2px}.time-box span{font-size:.68rem}.pass-row{flex-direction:column}.pass-row button{width:100%}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+  <div class="gate-card">
+    <div class="gate-heart">♡</div>
+    <h1 id="gate-title">Только для Ани</h1>
+    <p class="hint">Подсказка: дата начала наших отношений</p>
+    <form id="password-form">
+      <div class="pass-row"><input id="password" type="password" inputmode="numeric" autocomplete="off" placeholder="Введи пароль" aria-label="Пароль" required><button type="submit">Открыть ♡</button></div>
+      <div id="error" class="error" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
+<div id="confetti"></div>
+<main id="site">
+<header class="hero">
+  <span class="floating f1">♡</span><span class="floating f2">✧</span><span class="floating f3">♥</span><span class="floating f4">✿</span>
+  <div class="eyebrow">маленький мир для самого дорогого человека</div>
+  <h1>Аня, с<br>днём рождения!</h1>
+  <p>Сегодня особенный день, потому что именно сегодня мир стал чуточку прекраснее. Я очень рад, что в моей жизни есть ты. ♡</p>
+  <a class="cta" href="#letter">Для тебя — с любовью ↓</a>
+</header>
+
+<section id="photos" class="reveal">
+  <h2 class="section-title">Наши моменты</h2>
+  <p class="section-sub">Несколько кадров нашей маленькой истории. </p>
+  <div class="photo-grid">
+    <article class="photo-card" style="--tilt:-2deg"><img src="photos/photo1.jpg" alt="Наш любимый момент" onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden')"><div class="placeholder hidden">Добавь фото 1<br>photos/photo1.jpg</div><p>Счастье — рядом ♡</p></article>
+    <article class="photo-card" style="--tilt:1.5deg"><img src="photos/photo2.jpg" alt="Наша улыбка" onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden')"><div class="placeholder hidden">Добавь фото 2<br>photos/photo2.jpg</div><p>Момент, который люблю</p></article>
+    <article class="photo-card" style="--tilt:-1deg"><img src="photos/photo3.jpg" alt="Наше воспоминание" onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden')"><div class="placeholder hidden">Добавь фото 3<br>photos/photo3.jpg</div><p>И это только начало</p></article>
+  </div>
+</section>
+
+<section id="letter" class="reveal">
+  <h2 class="section-title">Письмо тебе</h2>
+  <p class="section-sub">Несколько слов, которые хочется сказать именно сегодня.</p>
+  <div class="letter-wrap">
+    <p>Моя дорогая Аня,</p>
+    <p>с днём рождения, солнышко! 💗 Я хочу, чтобы в твоей жизни было как можно больше поводов улыбаться, чтобы мечты становились планами, а планы — воспоминаниями, которыми ты будешь гордиться.</p>
+    <p>Спасибо тебе за твою улыбку, за тепло и за все моменты, которые становятся особенными просто потому, что мы проводим их вместе. Мне хочется поддерживать тебя, радовать и быть рядом не только в большие праздники, но и в самые обычные дни.</p>
+    <p>Пусть этот новый год твоей жизни принесёт тебе много нежности, вдохновения и счастья. А я постараюсь добавлять к этому счастью ещё немного своего.</p>
+    <p>Обнимаю крепко. Сегодня твой день — сияй! ♡</p>
+    <p class="signature">Твой Максим 💌</p>
+  </div>
+</section>
+
+<section id="timer-section" class="reveal">
+  <h2 class="section-title">Наша история</h2>
+  <p class="section-sub">С того самого дня — и дальше, день за днём.</p>
+  <div class="timer-panel">
+    <div class="timer-label">МЫ ВМЕСТЕ УЖЕ</div>
+    <div class="timer" aria-live="off">
+      <div class="time-box"><strong id="days">—</strong><span>дней</span></div>
+      <div class="time-box"><strong id="hours">—</strong><span>часов</span></div>
+      <div class="time-box"><strong id="minutes">—</strong><span>минут</span></div>
+      <div class="time-box"><strong id="seconds">—</strong><span>секунд</span></div>
+    </div>
+    <p style="font: .82rem Arial,sans-serif;color:#a66a84;margin:20px 0 0">18 августа 2025 года · начало нашей истории</p>
+  </div>
+</section>
+
+<section id="reasons" class="reveal">
+  <h2 class="section-title">Почему ты особенная</h2>
+  <p class="section-sub">Можно придумать миллион причин. Вот несколько из них.</p>
+  <div class="reasons">
+    <article class="reason"><b>♡</b><p>Потому что твоя улыбка умеет сделать даже обычный день лучше.</p></article>
+    <article class="reason"><b>✧</b><p>Потому что рядом с тобой можно быть собой — и это бесценно.</p></article>
+    <article class="reason"><b>🌷</b><p>Потому что в тебе столько тепла, доброты и маленьких чудес.</p></article>
+    <article class="reason"><b>☁</b><p>Потому что даже простые моменты с тобой хочется запоминать.</p></article>
+    <article class="reason"><b>💗</b><p>Потому что ты вдохновляешь меня становиться лучше.</p></article>
+    <article class="reason"><b>∞</b><p>Потому что причин любить тебя гораздо больше, чем поместится на странице.</p></article>
+  </div>
+</section>
+
+<div class="final-note reveal">
+  <h2>С днём рождения, Аня! ♡</h2>
+  <p>Пусть впереди будет ещё очень много наших фотографий, смешных историй, тёплых вечеров и счастливых дат. Спасибо, что ты есть. С любовью, Максим.</p>
+</div>
+<div class="footer">Сделано с любовью для Ани · Максим ♡</div>
+</main>
+<script>
+const CORRECT_PASSWORD = "18082025";
+const form = document.getElementById("password-form");
+const gate = document.getElementById("gate");
+const site = document.getElementById("site");
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const entered = document.getElementById("password").value;
+  if (entered === CORRECT_PASSWORD) {
+    gate.classList.add("gone");
+    site.classList.add("open");
+    document.body.style.overflow = "";
+    celebrate();
+    setTimeout(() => gate.remove(), 800);
+  } else {
+    document.getElementById("error").textContent = "Кажется, дата не совпала. Попробуй ещё раз ♡";
+    document.getElementById("password").select();
+  }
+});
+document.body.style.overflow = "hidden";
+
+function updateTimer() {
+  const start = new Date(2025, 7, 18, 0, 0, 0); // 18 августа 2025, местное время
+  let diff = Math.max(0, Date.now() - start.getTime());
+  const day = 86400000, hour = 3600000, minute = 60000;
+  const d = Math.floor(diff / day); diff %= day;
+  const h = Math.floor(diff / hour); diff %= hour;
+  const m = Math.floor(diff / minute); diff %= minute;
+  const s = Math.floor(diff / 1000);
+  document.getElementById("days").textContent = d;
+  document.getElementById("hours").textContent = String(h).padStart(2,"0");
+  document.getElementById("minutes").textContent = String(m).padStart(2,"0");
+  document.getElementById("seconds").textContent = String(s).padStart(2,"0");
+}
+updateTimer(); setInterval(updateTimer, 1000);
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); }});
+}, {threshold: 0.12});
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+function celebrate() {
+  const holder = document.getElementById("confetti");
+  const symbols = ["♡","♥","✿","✧","💗"];
+  for (let i=0; i<34; i++) {
+    const p = document.createElement("span");
+    p.className = "petal";
+    p.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+    p.style.left = Math.random()*100 + "%";
+    p.style.animationDuration = (3 + Math.random()*4) + "s";
+    p.style.animationDelay = (Math.random()*1.2) + "s";
+    p.style.fontSize = (14 + Math.random()*20) + "px";
+    holder.appendChild(p);
+    setTimeout(() => p.remove(), 8500);
+  }
+}
+</script>
+</body>
+</html>
